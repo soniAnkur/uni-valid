@@ -1,4 +1,4 @@
-# as-input-wrapper
+# uni-valid
 
 
 
@@ -7,7 +7,7 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     |
+<!-- | Property | Attribute | Description | Type     |
 | -------- | --------- | ----------- | -------- |
 | `error`  | `error`   |             | `string` |
 | `hint`   | `hint`    |             | `string` |
@@ -16,4 +16,4 @@
 
 ----------------------------------------------
 
-*Built with [StencilJS](https://stenciljs.com/)*
+*Built with [StencilJS](https://stenciljs.com/)* -->
