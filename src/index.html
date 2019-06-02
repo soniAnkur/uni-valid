@@ -5,49 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
   <script src="/build/mycomponent.js"></script>
+  <style>
+    
+    input {
+      padding: .5rem;
+      font-size: 1rem;
+      color: #00000096;
+      border: 1px solid #0000003d;
+      border-radius: 5px;
+      width: calc(100% - 1rem)
+    }
 
+
+  </style>
 </head>
 <body>
-  <!-- <div style="max-width: 400px; padding: 1rem;">
-    <as-input-wrapper
-      label="Default input"
-      hint="This is a useful hint">
-      <input name="input1" type="text" />
-    </as-input-wrapper>
-
-    <as-input-wrapper
-      label="Disabled input">
-      <input name="input2" type="text" value="This can't be changed" disabled />
-    </as-input-wrapper>
-
-    <as-input-wrapper
-      label="Required input"
-      hint="Please enter a value">
-      <input name="firstname" type="text" required />
-    </as-input-wrapper>
-
-    <as-input-wrapper
-      label="Input with error"
-      hint="How do people call you?"
-      error="Please enter a valid name!">
-      <input name="firstname" type="name" required value="Sonny Boy" />
-    </as-input-wrapper>
-
-    <as-input-wrapper
-      label="Input as textarea"
-      hint="What's on your mind recently?">
-      <textarea name="firstname" rows="5"></textarea>
-    </as-input-wrapper>
-
-    
-  </div> -->
-
-  <!-- <as-input label="Label" hint="Hint" error="Error" required /> -->
-
-<div>
+<div class="container">
   <uni-valid
-            config= "this is conifg !!" hint=true>
-            <input name="firstname" type="name" required value="Sonny Boy" style="border: 1px solid red;"/>
+            config= "this is conifg !!">
+            <input name="firstname" type="name" required value="Sonny Boy"/>
   </uni-valid>
 </div>
   

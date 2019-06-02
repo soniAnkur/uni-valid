@@ -34,8 +34,8 @@
 
       return {
         class: {
-          'as-input-wrapper': true,
-          'as-input-wrapper--disabled': inputEl ? inputEl.disabled : false,
+          'uni-valid': true,
+          'uni-valid--disabled': inputEl ? inputEl.disabled : false,
         }
       };
     }
@@ -43,23 +43,24 @@
     public onMouseEnter(e) {
       console.log('enterd', e); 
       this.hint=true;
-      console.log("showhiunt: " , this.hint, JSON.parse(this.config));
+      console.log("showhiunt: " , this.hint);
 
     }
     public onMouseLeave(e) {
       console.log('left', e); 
       this.hint = false;
-      console.log("showhiunt: " , this.hint, JSON.parse(this.config));
+      console.log("showhiunt: " , this.hint);
     }
 
     public render() {
       console.log('in   render ☠️ ️ ')
-      const inputEl = <div class="as-input-wrapper__input"
+      const inputEl = <div class="uni-valid__input"
                            onMouseEnter={() => this.onMouseEnter(event)}
                            onMouseLeave={() => this.onMouseLeave(event)}><slot />
                       </div>
-      const hintEl = (this.hint) ? (<div class="as-input-wrapper__hint">{ this.config }</div>) : null;
+      // const attachment =  (<div class="uni-valid__meta">{ this.config }</div>);
+      const attachment = (this.hint) ? (<div class="uni-valid__meta">{ this.config }</div>) : null;
 
-      return [ inputEl, hintEl];
+      return [ inputEl, attachment];
     }
 }

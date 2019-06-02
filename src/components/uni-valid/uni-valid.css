@@ -1,0 +1,17 @@
+.uni-valid {
+  /* background-color: rgba(39, 235, 25, 0.17); */
+  width: 300px;
+  display: grid;
+  padding: 1rem;
+
+}
+.uni-valid__input{
+  margin-bottom: .5rem;
+}
+.uni-valid__meta{
+  color:#ED8D8D;
+  background-color: #FEF4F4;
+  padding: .5rem;
+  font-size: .8rem;
+
+}
