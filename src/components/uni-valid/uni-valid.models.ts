@@ -81,18 +81,18 @@ export class ValidationHelper {
     }
 }
 
-class FormTest {
-    schema = new FormSchema();
-    constructor() {
-        let mandatory = new ValidationRule(ValidationType.MANDATORY, ValidationMessages.MANDATORY);
-        let string = new ValidationRule(ValidationType.STRING, ValidationMessages.STRING);
-        string.meta[MetadataKeys.MIN_LENGTH] = 10;
-        string.meta[MetadataKeys.MAX_LENGTH] = 100;
+// class FormTest {
+//     schema = new FormSchema();
+//     constructor() {
+//         let mandatory = new ValidationRule(ValidationType.MANDATORY, ValidationMessages.MANDATORY);
+//         let string = new ValidationRule(ValidationType.STRING, ValidationMessages.STRING);
+//         string.meta[MetadataKeys.MIN_LENGTH] = 10;
+//         string.meta[MetadataKeys.MAX_LENGTH] = 100;
 
-        let rules = [mandatory, string];
-        this.schema['Name'] = rules;
-        console.log(new FormTest());
-    }
+//         let rules = [mandatory, string];
+//         this.schema['Name'] = rules;
+//         console.log(new FormTest());
+//     }
 
 
-}
+// }

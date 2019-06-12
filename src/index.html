@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
   <script src="/build/mycomponent.js"></script>
   <style>
-    
     input {
       padding: .5rem;
       font-size: 1rem;
@@ -15,18 +15,46 @@
       border-radius: 5px;
       width: calc(100% - 1rem)
     }
-
-
   </style>
 </head>
+
 <body>
-<div class="container">
-  <uni-valid
-            config= "this is conifg !!">
-            <input name="firstname" type="name" required value="Sonny Boy"/>
-  </uni-valid>
-</div>
-  
+  <div class="container">
+    <uni-valid config="this is conifg !!">
+      <input name="firstname" type="name" required value="Sonny Boy" />
+    </uni-valid>
+  </div>
+
+  <script>
+
+    const test = {
+
+      'name': [
+        {
+          "message": "lorum ipsume testing Mandatory",
+          "type": "MANDATORY",
+          "valid": false,
+          "meta": {},
+
+        }, {
+          "message": "lorum ipsume testing String",
+          "type": "STRING",
+          "valid": false,
+          "meta": {
+            "MIN_LENGTH": 10,
+            "MAX_LENGTH": 100
+          }
+
+        }
+      ]
+    };
+
+    document.getElementsByTagName('uni-valid')[0].setAttribute('config', JSON.stringify(test));
+
+
+  </script>
+
 
 </body>
+
 </html>

@@ -59,8 +59,7 @@
                            onMouseLeave={() => this.onMouseLeave(event)}><slot />
                       </div>
       // const attachment =  (<div class="uni-valid__meta">{ this.config }</div>);
-      const attachment = (this.hint) ? (<div class="uni-valid__meta">{ this.config }</div>) : null;
-
+      const attachment = (this.hint) ? (<div class="uni-valid__meta">{ JSON.parse(this.config).name.map(el => <li >{el.message }</li>) }</div>) : null;
       return [ inputEl, attachment];
     }
 }
