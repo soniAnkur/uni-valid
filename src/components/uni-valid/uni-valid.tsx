@@ -33,7 +33,7 @@ import { ValidationHelper,  ValidationType } from './uni-valid.models';
               inputEl.addEventListener('keyup', this.listen(), false)
               inputEl.addEventListener('change', this.listen(), false)
               inputEl.addEventListener('mouseover', this.listen(), false)
-              inputEl.addEventListener('mouseleace', this.listen(), false)
+              inputEl.addEventListener('mouseleave', this.listen(), false)
 
     }
 
