@@ -1,5 +1,4 @@
 .uni-valid {
-  /* background-color: rgba(39, 235, 25, 0.17); */
   width: 300px;
   display: grid;
   padding: 1rem;
@@ -9,9 +8,16 @@
   margin-bottom: .5rem;
 }
 .uni-valid__meta{
-  color:#ED8D8D;
-  background-color: #FEF4F4;
   padding: .5rem;
   font-size: .8rem;
+  border: 1px solid #d9d9d9;
 
+}
+
+.valid {
+  color: rgba(40, 128, 40, 0.877);
+}
+
+.invalid {
+  color:rgb(231, 56, 56);  
 }

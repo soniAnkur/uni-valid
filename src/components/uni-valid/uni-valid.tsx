@@ -1,65 +1,86 @@
-  import { Component, Element, Prop, Watch, State } from '@stencil/core';
+import { Component, Element, Prop, Watch, State } from '@stencil/core';
+import { ValidationHelper,  ValidationType } from './uni-valid.models';
 
   @Component({
     tag: 'uni-valid',
     styleUrl: 'uni-valid.css',
     shadow: false,
   })
-  export class UniValid {
-    @Element() public el: HTMLElement;
-    
+  export class UniValid {@Element() public el: HTMLElement;
+
     @Prop() 
-    public config: string;
+    public key: string;
+
+    @Prop() 
+    public config: any;
     
     @State() 
-    public hint: boolean;
-    @Watch('hint') 
-    public showHintHandler(newValue: boolean, oldValue: boolean) {
-      console.log('👍🏻 in Watch for hint', oldValue, newValue);
-    }
-
+    public showHint: boolean;
+    
     @State() 
     public value: any;
-    @Watch('value') 
-    public valueChangeHandler(newValue: boolean, oldValue: boolean) {
-      console.log('👍🏻 in Watch for val', oldValue, newValue);
+
+    private jsonConfig;
+    @Watch('config')
+    configDidChangeHandler(newValue) {
+       console.log('👍🏻 value change detected in watch ~~~~~~ config');
+       this.jsonConfig = JSON.parse(newValue);
     }
 
+    componentWillLoad() {
+      this.jsonConfig = JSON.parse(this.config);
+      const inputEl: HTMLInputElement | HTMLTextAreaElement = this.el.querySelector('input') || this.el.querySelector('textarea');
+              inputEl.addEventListener('keyup', this.listen(), false)
+              inputEl.addEventListener('change', this.listen(), false)
+              inputEl.addEventListener('mouseover', this.listen(), false)
+              inputEl.addEventListener('mouseleace', this.listen(), false)
+
+    }
 
     public hostData() {
-      const inputEl: HTMLInputElement | HTMLTextAreaElement = this.el.querySelector('input') || this.el.querySelector('textarea');
-      inputEl.addEventListener('change', (event) => {
-        this.value = event.currentTarget['value'];
-      }, false)
-
-      return {
-        class: {
-          'uni-valid': true,
-          'uni-valid--disabled': inputEl ? inputEl.disabled : false,
-        }
-      };
+        const inputEl: HTMLInputElement | HTMLTextAreaElement = this.el.querySelector('input') || this.el.querySelector('textarea');
+        return {
+          class: {
+            'uni-valid': true,
+            'uni-valid--disabled': inputEl ? inputEl.disabled : false,
+          }
+        };
     }
+    
+  private listen(): EventListenerOrEventListenerObject {
+    return (event) => {
+      this.value = event.currentTarget['value'];
+      this.jsonConfig.name.forEach((rule) => {
+        switch (rule.type) {
+          case ValidationType.MANDATORY:
+              rule = ValidationHelper.checkMandatory(rule, this.value);
+          case ValidationType.STRING:
+              rule =  ValidationHelper.checkString(rule , this.value);                    
+          
+      }
 
-    public onMouseEnter(e) {
-      console.log('enterd', e); 
-      this.hint=true;
-      console.log("showhiunt: " , this.hint);
+      })
+      this.config = JSON.stringify(this.jsonConfig);
+    };
+  }
 
-    }
-    public onMouseLeave(e) {
-      console.log('left', e); 
-      this.hint = false;
-      console.log("showhiunt: " , this.hint);
-    }
+  render() {
+      console.log('in   render ☠️ ️ ');
+      const container = <div class="uni-valid__input"
+                              onMouseEnter={() => this.showHint = true}
+                              onMouseLeave={() => this.showHint = false}>
+                              <slot />
+                        </div>
 
-    public render() {
-      console.log('in   render ☠️ ️ ')
-      const inputEl = <div class="uni-valid__input"
-                           onMouseEnter={() => this.onMouseEnter(event)}
-                           onMouseLeave={() => this.onMouseLeave(event)}><slot />
-                      </div>
-      // const attachment =  (<div class="uni-valid__meta">{ this.config }</div>);
-      const attachment = (this.hint) ? (<div class="uni-valid__meta">{ JSON.parse(this.config).name.map(el => <li >{el.message }</li>) }</div>) : null;
-      return [ inputEl, attachment];
-    }
+      const attachment = (this.showHint) ? 
+                          (
+                              <div class="uni-valid__meta">
+                                { 
+                                    this.jsonConfig.name.map(el => 
+                                    <div class={ (el.valid)  ? 'valid ' : 'invalid' }>{el.message}</div>) 
+                                }
+                              </div>
+                          ) : null;
+      return [container, attachment];
+  }
 }

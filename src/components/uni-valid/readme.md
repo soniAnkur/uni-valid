@@ -9,7 +9,8 @@
 
 | Property | Attribute | Description | Type     |
 | -------- | --------- | ----------- | -------- |
-| `config` | `config`  |             | `string` |
+| `config` | --        |             | `any`    |
+| `key`    | `key`     |             | `string` |
 
 
 ----------------------------------------------

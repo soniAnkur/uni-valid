@@ -12,65 +12,25 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface AsInputWrapper {
-    'error': string;
-    'hint': string;
-    'label': string;
-  }
-  interface AsInputWrapperAttributes extends StencilHTMLAttributes {
-    'error'?: string;
-    'hint'?: string;
-    'label'?: string;
-  }
-
-  interface AsInput {
-    'error': string;
-    'hint': string;
-    'label': string;
-    'name': string;
-    'value': string;
-  }
-  interface AsInputAttributes extends StencilHTMLAttributes {
-    'error'?: string;
-    'hint'?: string;
-    'label'?: string;
-    'name'?: string;
-    'value'?: string;
-  }
-
   interface UniValid {
-    'config': string;
+    'config': any;
+    'key': string;
   }
   interface UniValidAttributes extends StencilHTMLAttributes {
-    'config'?: string;
+    'config'?: any;
+    'key'?: string;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'AsInputWrapper': Components.AsInputWrapper;
-    'AsInput': Components.AsInput;
     'UniValid': Components.UniValid;
   }
 
   interface StencilIntrinsicElements {
-    'as-input-wrapper': Components.AsInputWrapperAttributes;
-    'as-input': Components.AsInputAttributes;
     'uni-valid': Components.UniValidAttributes;
   }
 
-
-  interface HTMLAsInputWrapperElement extends Components.AsInputWrapper, HTMLStencilElement {}
-  var HTMLAsInputWrapperElement: {
-    prototype: HTMLAsInputWrapperElement;
-    new (): HTMLAsInputWrapperElement;
-  };
-
-  interface HTMLAsInputElement extends Components.AsInput, HTMLStencilElement {}
-  var HTMLAsInputElement: {
-    prototype: HTMLAsInputElement;
-    new (): HTMLAsInputElement;
-  };
 
   interface HTMLUniValidElement extends Components.UniValid, HTMLStencilElement {}
   var HTMLUniValidElement: {
@@ -79,14 +39,10 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'as-input-wrapper': HTMLAsInputWrapperElement
-    'as-input': HTMLAsInputElement
     'uni-valid': HTMLUniValidElement
   }
 
   interface ElementTagNameMap {
-    'as-input-wrapper': HTMLAsInputWrapperElement;
-    'as-input': HTMLAsInputElement;
     'uni-valid': HTMLUniValidElement;
   }
 
